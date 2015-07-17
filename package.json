@@ -1,0 +1,19 @@
+{
+  "name": "offersdb",
+  "version": "1.0.0",
+  "description": "Offers Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://anjalisingh@bitbucket.org/anjalisingh/offersdb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/anjalisingh/offersdb#readme",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
+}
