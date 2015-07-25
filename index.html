@@ -1,33 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Case</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-</head>
-<body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+     <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
+        <linK rel="stylesheet" href="bootstrap-3.3.5-dist/css/Custom.css"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+        </script> 
+        <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js">
+        </script> 
+  </head>
   
+  <body>
+    <div class="navbar-wrapper custom-navbar" role="navigation">
+    <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">redBus Promotion CMS</a>
+          </div>
+          <div>
+            <ul class="nav navbar-nav custom-navbar navbar-right">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Add Banner</a></li>
+              <li><a href="#">Add Offer</a></li>
+              <li><a href="#">Page 3</a></li>
+            </ul>   
+          </div>
+        </div>   
+      </div> 
+
 <div class="container">
-  <h3>Basic Navbar Example</h3>
-  <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datepicker();
+            });
+        </script>
+    </div>
 </div>
-</body>
+  </body>
 </html>

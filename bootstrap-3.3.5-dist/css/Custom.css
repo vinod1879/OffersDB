@@ -1,0 +1,14 @@
+.custom-navbar{
+	color: #FFFFFF;
+    background-color: #B40404;
+}
+
+
+.custom-navbar > a {
+	color: #FFF
+}
+
+.custom-navbar >  li > a {
+	color: #FFF
+}
+
