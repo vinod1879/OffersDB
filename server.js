@@ -8,6 +8,7 @@ var express		=		require('express'),
 
 var Offer		=		require('./app/models/offer');
 var User		=		require('./app/models/user');
+var superSecret = 		'averyniceappindeed';
 
 mongoose.connect('mongodb://localhost:27017/offersdb');
 
@@ -33,10 +34,61 @@ app.get('/', function(req, res) {
 
 var apiRouter = express.Router();
 
+//AUTHENTICATION OF USERS
+//=========================================
+
+apiRouter.post('/authenticate', function(req, res) {
+
+	User.findOne({
+
+		username: req.body.username
+	}).select('username password').exec(function(err, user) {
+
+		if(err) throw err;
+
+		if(!user) {
+			res.json({success: false, message: 'Authentication failed. User not found' });
+		} else {
+
+			var validPassword = user.comparePassword(req.body.password);
+
+			if(!validPassword) {
+				res.json( {success: false, message: 'Authentication failed. Wrong password.' } );
+			} else {
+				var token = jwt.sign( {name: user.name, username: user.username}, superSecret, {expiresInMinutes: 1440} );
+
+				res.json( {success: true, message: 'Login success!', token: token} );
+			}
+		}
+	});
+});
+
+//MIDDLEWARE
+//=========================================
+
 apiRouter.use(function(req, res, next) {
 
 	console.log('Somebody just came to our api');
-	next();
+
+	var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+
+	if(token) {
+
+		jwt.verify(token, superSecret, function(err, decoded) {
+
+			if(err) {
+				return res.status(403).send( {success: false, message: 'Failed to authenticate token.' } );
+			} else {
+
+				req.decoded = decoded;
+
+				next();
+			}
+		})
+	} else {
+
+		return res.status(403).send( {success: false, message: 'No token provided.'} );
+	}
 });
 
 apiRouter.get('/', function(req, res) {
@@ -133,7 +185,7 @@ apiRouter.route('/offers/:offer_id').get(function(req, res) {
 									})
 								});
 
-// ROUTES FOR USER AUTHENTICATION
+// ROUTES FOR USER
 //==========================================
 
 
@@ -143,6 +195,8 @@ apiRouter.route('/users').post(function(req, res) {
 
 							user.username 			= req.body.username;
 							user.password 			= req.body.password;
+							user.googleId			= req.body.googleId;
+							user.name				= req.body.name;
 							
 
 							//ADD VALIDATIONS
@@ -166,7 +220,7 @@ apiRouter.route('/users').post(function(req, res) {
 									else
 										return res.send(err);
 								}
-								res.json(offer);
+								res.json( {success: true, message: 'User created!' } );
 							});
 						}).get(function(req, res) {
 
@@ -193,8 +247,10 @@ apiRouter.route('/users/:user_id').get(function(req, res) {
 
 										var hasChanges = false;
 
-										if(req.body.username) { user.username = req.body.username; hasChanges = true; }
-										if(req.body.password) { user.password = req.body.password; hasChanges = true; }
+										if(req.body.username) 	{ user.username = req.body.username; hasChanges = true; }
+										if(req.body.password) 	{ user.password = req.body.password; hasChanges = true; }
+										if(req.body.googleId) 	{ user.googleId = req.body.googleId; hasChanges = true; }
+										if(req.body.name) 		{ user.name 	= req.body.name; hasChanges = true; }
 
 										if(hasChanges) {
 
@@ -221,6 +277,11 @@ apiRouter.route('/users/:user_id').get(function(req, res) {
 										res.json({message: 'User Successfully deleted'});
 									})
 								});
+
+apiRouter.get('/me', function(req, res) {
+
+	res.send(req.decoded);
+});
 
 
 app.use('/api', apiRouter);

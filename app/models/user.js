@@ -3,9 +3,10 @@ var 	mongoose	=	require('mongoose'),
 		bcrypt		=	require('bcrypt-nodejs');
 
 var UserSchema		=	new Schema({
-									username: {type: String, require: true},
-									googleId: {type: String, require: true, index: {unique:true}},
-									password: {type: String, require: true, select: false}
+									name		: {type: String, require: true},
+									username	: {type: String, require: true, index: {unique: true} },
+									googleId	: {type: String, require: true, index: {unique: true} },
+									password 	: {type: String, require: true, select: false}
 								});
 
 UserSchema.pre('save', function(next)
@@ -24,6 +25,9 @@ UserSchema.pre('save', function(next)
 });
 
 UserSchema.methods.comparePassword = function(password) {
+
+	if(!password)
+		return false;
 
 	var user = this;
 
