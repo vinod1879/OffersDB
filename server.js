@@ -4,8 +4,10 @@ var express		=		require('express'),
 	morgan		=		require('morgan'),
 	mongoose	=		require('mongoose'),
 	port		=		process.env.PORT || 8080;
+	jwt			=		require('jsonwebtoken');
 
 var Offer		=		require('./app/models/offer');
+var User		=		require('./app/models/user');
 
 mongoose.connect('mongodb://localhost:27017/offersdb');
 
@@ -26,20 +28,23 @@ app.use(morgan('dev'));
 //=========================================
 
 app.get('/', function(req, res) {
-	res.send('Welcome to the offers home page!');
+	res.send('Welcome to the home page!');
 });
 
 var apiRouter = express.Router();
 
 apiRouter.use(function(req, res, next) {
 
-	console.log('Somebody just came to our app');
+	console.log('Somebody just came to our api');
 	next();
 });
 
 apiRouter.get('/', function(req, res) {
-	res.json({message: 'hooray! welcome to our api!' });
+	res.json({message: 'hooray! welcome to our app!' });
 });
+
+//ROUTING FOR OFFERS
+//==========================================
 
 apiRouter.route('/offers').post(function(req, res) {
 
@@ -128,7 +133,98 @@ apiRouter.route('/offers/:offer_id').get(function(req, res) {
 									})
 								});
 
+// ROUTES FOR USER AUTHENTICATION
+//==========================================
+
+
+apiRouter.route('/users').post(function(req, res) {
+
+							var user = User();
+
+							user.username 			= req.body.username;
+							user.password 			= req.body.password;
+							
+
+							//ADD VALIDATIONS
+							//=================================================
+
+							if(!user.username) {
+								res.statusCode = 400;
+								return res.json( {message: 'User name cannot be empty!'} );
+							}
+
+							if(!user.password) {
+								res.statusCode = 400;
+								return res.json( {message: 'Password cannot be empty!'} );
+							}
+
+							user.save(function(err) {
+
+								if(err) {
+									if(err.code == 11000)
+										return res.json({success: false, message: 'User already exists. '});
+									else
+										return res.send(err);
+								}
+								res.json(offer);
+							});
+						}).get(function(req, res) {
+
+							User.find(function(err, users) {
+								if(err) res.send(err);
+
+								res.json(users);
+							});
+						});
+
+apiRouter.route('/users/:user_id').get(function(req, res) {
+
+									User.findById(req.params.user_id, function(err, user) {
+
+										if(err) res.send(err);
+
+										res.json(user);
+									});
+								}).put(function(req, res) {
+
+									User.findById(req.params.user_id, function(err, user) {
+
+										if(err) res.send(err);
+
+										var hasChanges = false;
+
+										if(req.body.username) { user.username = req.body.username; hasChanges = true; }
+										if(req.body.password) { user.password = req.body.password; hasChanges = true; }
+
+										if(hasChanges) {
+
+											user.save(function(err) {
+
+												if(err) res.send(err);
+
+												res.json({message: 'User updated!' });
+											});
+										} else {
+
+											res.json({message: 'Nothing to update'});
+										}
+
+									});
+								}).delete(function(req, res) {
+
+									User.remove({
+										_id: req.params.user_id
+									}, function(err, user) {
+
+										if(err) return res.send(err);
+
+										res.json({message: 'User Successfully deleted'});
+									})
+								});
+
+
 app.use('/api', apiRouter);
+
 
 
 // START THE SERVER
