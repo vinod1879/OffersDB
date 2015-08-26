@@ -3,12 +3,11 @@ var express		=		require('express'),
 	bodyParser	=		require('body-parser'),
 	morgan		=		require('morgan'),
 	mongoose	=		require('mongoose');
+	path		=		require('path');
 
-var Config		=		require('./config'),
-	apiRouter	=		require('./app/routes/api')(app, express);
+var Config		=		require('./config');
 
 
-mongoose.connect(Config.database);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -22,23 +21,33 @@ app.use(function(req, res, next) {
 });
 
 app.use(morgan('dev'));
+app.use(express.static(__dirname + '/public'));
 
-//ROUTES FOR THE API
-//=========================================
+// MONGOOSE DATABASE CONNECTION
+// =========================================
+mongoose.connect(Config.database);
 
-app.get('/', function(req, res) {
-	res.send('Welcome to the home page!');
-});
 
+// ROUTES FOR THE API
+// =========================================
+
+var apiRouter	=		require('./app/routes/api')(app, express);
 
 apiRouter.get('/me', function(req, res) {
 
 	res.send(req.decoded);
 });
 
-
 app.use('/api', apiRouter);
 
+
+// MAIN CATCHALL ROUTE
+// =========================================
+
+app.get('*', function(req, res) {
+
+	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+});
 
 
 // START THE SERVER
