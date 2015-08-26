@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<title>redBus offer App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src = "builds.js"></script>
+<body ng-app="myApp" ng-controller="userCtrl" padding-top: 70px>
+
+  <div class="container">
+
+    <h3>Builds</h3>
+
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>offerId</th>
+            <th>offerCode</th>
+            <th>title</th>
+            <th>buttonActions</th>
+            <th>buttonTitles</th>
+            <th>country</th>
+            <th>description</th>
+            <th>validFrom</th>
+            <th>validTo</th>
+          </tr>
+      </thead>
+      <tbody><tr ng-repeat="mogly in offers">
+        <td>{{mogly.offerId}}</td>
+        <td>{{mogly.offerCode}}</td>
+        <td>{{mogly.title}}</td>
+        <td>{{mogly.buttonActions}}</td>
+        <td>{{mogly.buttonTitles}}</td>
+        <td>{{mogly.country}}<w/td>
+        <td>{{mogly.description}}</td>
+        <td>{{mogly.validFrom}}</td>
+        <td>{{mogly.validTo}}</td>
+       <td><a class="btn" ng-click="install(mogly.offerId)" href="#">
+            <span class="glyphicon glyphicon-download"></span>&nbsp;&nbsp;Edit
+          </a></td>
+      </tr></tbody>
+    </table>
+    <table>
+      <tr>
+        <tbody>
+          <td>
+    <a class="btn" ng-click="install(mogly.offerId)" href="#">
+            <span class="glyphicon glyphicon-download"></span>&nbsp;&nbsp;New Offer
+          </a></td>
+        </tr></tbody>
+    </table>
+
+  </div>
+
+  
+</body>
+</html>
