@@ -3,14 +3,13 @@ var express		=		require('express'),
 	bodyParser	=		require('body-parser'),
 	morgan		=		require('morgan'),
 	mongoose	=		require('mongoose'),
-	port		=		process.env.PORT || 8080;
 	jwt			=		require('jsonwebtoken');
 
 var Offer		=		require('./app/models/offer');
 var User		=		require('./app/models/user');
-var superSecret = 		'averyniceappindeed';
+var Config		=		require('./config');
 
-mongoose.connect('mongodb://localhost:27017/offersdb');
+mongoose.connect(Config.database);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -291,5 +290,5 @@ app.use('/api', apiRouter);
 // START THE SERVER
 // =========================================
 
-app.listen(port);
-console.log('Magic happens on port ' + port);
+app.listen(Config.port);
+console.log('Magic happens on port ' + Config.port);
