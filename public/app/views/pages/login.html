@@ -1,32 +1,45 @@
-<div class="row col-sm-6 col-sm-offset-3">
-	<div class="jumbotron">
-		<h1>Login</h1>
+    <header>
+        <div class="navbar  custom-navbar " role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="e">
+                        <img src="..\..\..\assets\img\RBLogo.jpg" style="max-height:60px;">
+                    </a>
+                    <h class="navbar-brand custom-navbar">redBus Promotion CMS</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-		<form ng-submit="login.doLogin()">
+ 
+   <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <form class="form-signin" ng-submit="login.doLogin()">
 
-			<!-- USERNAME INPUT -->
-			<div class="form-group">
-				<label>Username</label>
-				<input type="text" clss="form-control" ng-model="login.loginData.username">
-			</div>
+                	<!-- INPUT USERNAME -->
+                    <input type="text" class="form-control" placeholder="Email" required autofocus ng-model="login.loginData.username">
 
-			<!-- PASSWORD INPUT -->
-			<div class="form-group">
-				<label>Password</label>
-				<input type="password" class="form-control" ng-model="login.loginData.password">
-			</div>
+                    <!-- INPUT PASSWORD -->
+                    <input type="password" class="form-control" placeholder="Password" required ng-model="login.loginData.password">
 
-			<!-- ERRORS -->
-			<div class="alert alert-danger" ng-if="login.error">
-				{{ login.error }}
-			</div>
+                    <!-- ERRORS -->
+                    <div class="alert alert-danger" ng-if="login.error">
+                    	{{ login.error }}
+                    </div>
 
-			<!-- LOGIN BUTTON -->
-			<button type="submit" class="btn btn-block btn-primary">
-				<span ng-if="!login.processing">Login</span>
-				<span ng-if="login.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
-			</button>
+                    <!-- LOGIN BUTTON -->
+                    <button class="btn btn-lg btn-danger btn-block" type="submit">
+                    	<span ng-if="!login.processing">Sign in</span>
+                    	<span ng-if="login.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
+                    </button>
 
-		</form>
-	</div>
-</div>
+                    <!-- REMEMBER ME -->
+                    <label class="checkbox pull-left" style="display:none">
+                        <input type="checkbox" value="remember-me">Remember me
+                    </label>
+                </form>
+            </div>
+            <a href="#" class="text-center new-account" style="display:none">Create an account </a>
+        </div>
+    </div>
