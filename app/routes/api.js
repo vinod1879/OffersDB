@@ -17,7 +17,7 @@ module.exports = function(app, express) {
 		User.findOne({
 
 			username: req.body.username
-		}).select('username password').exec(function(err, user) {
+		}).select('name username password').exec(function(err, user) {
 
 			if(err) throw err;
 
@@ -30,7 +30,7 @@ module.exports = function(app, express) {
 				if(!validPassword) {
 					res.json( {success: false, message: 'Authentication failed. Wrong password.' } );
 				} else {
-					var token = jwt.sign( {name: user.name, username: user.username}, superSecret, {expiresInMinutes: 1440} );
+					var token = jwt.sign( {name: user.name, username: user.username}, superSecret, {expiresInMinutes: 60} );
 
 					res.json( {success: true, message: 'Login success!', token: token} );
 				}
