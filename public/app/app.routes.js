@@ -10,9 +10,9 @@ angular.module('app.routes', ['ngRoute']).config(function($routeProvider, $locat
 		controllerAs	: 'login'
 	}).when('/users', {
 
-		templateUrl: 'app/views/pages/users/all.html',
-		controller: 'userController',
-		controllerAs: 'user'
+		templateUrl 	: 'app/views/pages/users/all.html',
+		controller 		: 'userController',
+		controllerAs 	: 'user'
 	}).when('/users/create', {
 
 		templateUrl		: 'app/views/pages/users/single.html',
@@ -23,6 +23,11 @@ angular.module('app.routes', ['ngRoute']).config(function($routeProvider, $locat
 		templateUrl		: 'app/views/pages/users/single.html',
 		controller 		: 'userEditController',
 		controllerAs 	: 'user'
+	}).when('/offers', {
+
+		templateUrl 	: 'app/views/pages/offers/all.html',
+		controller  	: 'offerController',
+		controllerAs 	: 'offer'
 	});
 
 	$locationProvider.html5Mode(true);
