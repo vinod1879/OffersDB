@@ -28,6 +28,16 @@ angular.module('app.routes', ['ngRoute']).config(function($routeProvider, $locat
 		templateUrl 	: 'app/views/pages/offers/all.html',
 		controller  	: 'offerController',
 		controllerAs 	: 'offer'
+	}).when('/offers/create', {
+
+		templateUrl 	: 'app/views/pages/offers/single.html',
+		controller 		: 'offerCreateController',
+		controllerAs 	: 'offer'
+	}).when('/offers/:offer_id', {
+
+		templateUrl 	: 'app/views/pages/offers/single.html',
+		controller 		: 'offerEditController',
+		controllerAs 	: 'offer'
 	});
 
 	$locationProvider.html5Mode(true);
