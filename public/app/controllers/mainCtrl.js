@@ -7,7 +7,7 @@ angular.module('mainCtrl', []).controller('mainController', function($rootScope,
 
 		vm.loggedIn = Auth.isLoggedIn();
 
-		Auth.getUser().then(function(data) {
+		Auth.getUser().success(function(data) {
 			vm.user = data;
 		});
 	});
