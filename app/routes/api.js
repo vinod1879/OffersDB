@@ -96,12 +96,12 @@ module.exports = function(app, express) {
 								//=================================================
 
 								if(!offer.offerCode) {
-									res.statusCode = 400;
+									
 									return res.json( {message: 'Offer Code cannot be empty!'} );
 								}
 
 								if(!offer.country) {
-									res.statusCode = 400;
+									
 									return res.json( {message: 'Country cannot be empty!'} );
 								}
 
@@ -177,12 +177,12 @@ module.exports = function(app, express) {
 								//=================================================
 
 								if(!user.username) {
-									res.statusCode = 400;
+									
 									return res.json( {message: 'User name cannot be empty!'} );
 								}
 
 								if(!user.password) {
-									res.statusCode = 400;
+									
 									return res.json( {message: 'Password cannot be empty!'} );
 								}
 
