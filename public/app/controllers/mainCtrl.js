@@ -7,7 +7,7 @@ angular.module('mainCtrl', []).controller('mainController', function($rootScope,
 
 		vm.loggedIn = Auth.isLoggedIn();
 
-		Auth.getUser().success(function(data) {
+		Auth.getUser().then(function(data) {
 			vm.user = data;
 		});
 	});
@@ -17,7 +17,7 @@ angular.module('mainCtrl', []).controller('mainController', function($rootScope,
 		vm.processing = true;
 		vm.error = '';
 
-		Auth.login(vm.loginData.username, vm.logindata.password).success(function(data){
+		Auth.login(vm.loginData.username, vm.loginData.password).success(function(data){
 
 			vm.processing = false;
 
@@ -32,6 +32,6 @@ angular.module('mainCtrl', []).controller('mainController', function($rootScope,
 
 		Auth.logout();
 		vm.user = {};
-		$locaton.path = ('/login');
+		$location.path('/login');
 	};
 });
