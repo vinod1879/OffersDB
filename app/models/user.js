@@ -5,7 +5,6 @@ var 	mongoose	=	require('mongoose'),
 var UserSchema		=	new Schema({
 									name		: {type: String, require: true},
 									username	: {type: String, require: true, index: {unique: true} },
-									googleId	: {type: String, require: true, index: {unique: true} },
 									password 	: {type: String, require: true, select: false}
 								});
 

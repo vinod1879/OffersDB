@@ -170,7 +170,6 @@ module.exports = function(app, express) {
 
 								user.username 			= req.body.username;
 								user.password 			= req.body.password;
-								user.googleId			= req.body.googleId;
 								user.name				= req.body.name;
 								
 
