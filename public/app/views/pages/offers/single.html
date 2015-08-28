@@ -5,7 +5,7 @@
 <div class="container">
     <form role="form" ng-submit="offer.saveOffer()">
         <table style="width:100%">
-            <tr>
+            <!-- <tr>
                 <td style="width:20%">
                     Button Action:
                 </td>
@@ -18,31 +18,40 @@
                         </select>
                     </div>
                 </td>
+            </tr> -->
+            <tr>
+                <td style="width:20%">
+                    OfferCode:
+                </td>
+                <td>
+                    <input type="text" placeholder="Enter Offer Code" class="form-group" ng-model="offer.offerData.offerCode">
+                </td>
             </tr>
             <tr>
                 <td style="width:20%">
-                    ButtonTitles:
+                    Button Title:
                 </td>
                 <td>
-                    <div class="form-group">
+<!--                     <div class="form-group">
                         <select class="selectpicker show-tick" data-style="btn-info">
                             <option>COPY CODE AND BOOK TICKET</option>
                             <option>COPY CODE AND BOOK TICKET</option>
                             <option>COPY CODE AND BOOK TICKET</option>
                         </select>
-                    </div>
+                    </div> -->
+                    <input type="text" class="form-group" placeholder="Enter button title" ng-model="offer.offerData.buttonTitles">
                 </td>
             </tr>
             <tr></tr>
             <tr></tr>
             <tr>
                 <td style="width:20%">
-                    Contry:
+                    Country:
                 </td>
                 <td>
                     <div class="form-group">
-                        <select id="countries" name="countries" ng-model="offer.offerData.country">
-                            <option default value="India">India</option>
+                        <select ng-model="offer.offerData.country">
+                            <option value="India">India</option>
                             <option value="Malaysia">Malaysia</option>
                             <option value="Singapore">Singapore</option>
                         </select>
@@ -55,7 +64,7 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <textarea class="form-control" id="description" placeholder="Enter Description"></textarea>
+                        <textarea class="form-control" placeholder="Enter Description" ng-model="offer.offerData.description"></textarea>
                     </div>
                 </td>
             </tr>
@@ -65,7 +74,12 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <textarea class="form-control" rows="5" id="details" placeholder="Enter Details"></textarea>
+                        <textarea class="form-control" rows="5" 
+                        placeholder="Enter Details
+ 1.
+ 2.
+ 3.
+ 4." ng-model="offer.offerData.detailsBody"></textarea>
                     </div>
                 </td>
             </tr>
@@ -77,7 +91,7 @@
                     <div class="form-group">
                         <div class='col-xs-5'>
                             <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" />
+                                <input type='text' class="form-control" ng-model="parent.offer.offerData.validFrom" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -98,18 +112,19 @@
                 <td>
                     <div class="form-group">
                         <div class='col-xs-5'>
-                            <div class='input-group date' id='datetimepicker2'>
-                                <input type='text' class="form-control" />
-                                <span class="input-group-addon">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
+                                    </span>
+                                 </div>
                         </div>
-                        <script type="text/javascript">
+                      
+                    <script type="text/javascript">
                         $(function() {
-                            $('#datetimepicker2').datepicker();
-                        });
-                        </script>
+                        $('#datetimepicker2').datepicker();
+                    });
+                    </script>
                     </div>
                 </td>
             </tr>
@@ -119,64 +134,37 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <textarea class="form-control" id="description" placeholder="Enter detailstitle"></textarea>
+                        <input type="text" placeolder="Enter details title" ng-model="offer.offerData.detailsTitle">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td style="width:20%">
-                    footer:
+                    Footer:
                 </td>
                 <td>
                     <div class="form-group">
-                        <textarea class="form-control" id="footer" placeholder="Enter Footer"></textarea>
+                        <input type="text" class="form-control" placeholder="Enter footer text" ng-model="offer.offerData.footer">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td style="width:20%">
-                    OfferCode:
+                    Title:
                 </td>
                 <td>
                     <div class="form-group">
-                        <textarea class="form-control" id="Offercode" placeholder="Enter Offercode" ng-model="offer.offerData.offerCode"></textarea>
+                        <input type="text" class="form-control" placeholder="Enter title" ng-model="offer.offerData.title">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td style="width:20%">
-                    title:
-                </td>
-                <td>
-                    <div class="form-group">
-                        <textarea class="form-control" id="title" placeholder="Enter title"></textarea>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     PhoneImageUrl:
                 </td>
                 <td>
                     <div class="form-group">
-                        <label class="control-label">Select File</label>
-                        <input id="input-21" type="file" accept="image/*" class="file-loading">
-                        <script>
-                        $(document).on('ready', function() {
-                            $("#input-21").fileinput({
-                                previewFileType: "image",
-                                browseClass: "btn btn-success",
-                                browseLabel: "Pick Image",
-                                browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
-                                removeClass: "btn btn-danger",
-                                removeLabel: "Delete",
-                                removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-                                uploadClass: "btn btn-info",
-                                uploadLabel: "Upload",
-                                uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> "
-                            });
-                        });
-                        </script>
+                        <input type="text" class="form-control" placeholder="Image URL" ng-model="offer.offerData.phoneImageUrl">
                     </div>
                 </td>
             </tr>
@@ -185,26 +173,7 @@
                     TabletImageUrl:
                 </td>
                 <td>
-                    <div class="form-group">
-                        <label class="control-label">Select File</label>
-                        <input id="input-21" type="file" accept="image/*" class="file-loading">
-                        <script>
-                        $(document).on('ready', function() {
-                            $("#input-21").fileinput({
-                                previewFileType: "image",
-                                browseClass: "btn btn-success",
-                                browseLabel: "Pick Image",
-                                browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
-                                removeClass: "btn btn-danger",
-                                removeLabel: "Delete",
-                                removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-                                uploadClass: "btn btn-info",
-                                uploadLabel: "Upload",
-                                uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> "
-                            });
-                        });
-                        </script>
-                    </div>
+                    <input class="form-group form-control" type="text" placeholder="Image URL" ng-model="offer.offerData.tabletImageUrl">
                 </td>
             </tr>
             <tr>
@@ -212,26 +181,7 @@
                     ThumbnailUrl:
                 </td>
                 <td>
-                    <div class="form-group">
-                        <label class="control-label">Select File</label>
-                        <input id="input-21" type="file" accept="image/*" class="file-loading">
-                        <script>
-                        $(document).on('ready', function() {
-                            $("#input-21").fileinput({
-                                previewFileType: "image",
-                                browseClass: "btn btn-success",
-                                browseLabel: "Pick Image",
-                                browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
-                                removeClass: "btn btn-danger",
-                                removeLabel: "Delete",
-                                removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
-                                uploadClass: "btn btn-info",
-                                uploadLabel: "Upload",
-                                uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> "
-                            });
-                        });
-                        </script>
-                    </div>
+                    <input class="form-group form-control" type="text" placeholder="Image URL" ng-model="offer.offerData.thumbnailUrl">
                 </td>
             </tr>
         </table>
