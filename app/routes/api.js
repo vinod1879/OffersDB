@@ -17,7 +17,7 @@ module.exports = function(app, express) {
 		User.findOne({
 
 			username: req.body.username
-		}).select('username password').exec(function(err, user) {
+		}).select('name username password').exec(function(err, user) {
 
 			if(err) throw err;
 
@@ -30,7 +30,7 @@ module.exports = function(app, express) {
 				if(!validPassword) {
 					res.json( {success: false, message: 'Authentication failed. Wrong password.' } );
 				} else {
-					var token = jwt.sign( {name: user.name, username: user.username}, superSecret, {expiresInMinutes: 1440} );
+					var token = jwt.sign( {name: user.name, username: user.username}, superSecret, {expiresInMinutes: 60} );
 
 					res.json( {success: true, message: 'Login success!', token: token} );
 				}
@@ -96,12 +96,12 @@ module.exports = function(app, express) {
 								//=================================================
 
 								if(!offer.offerCode) {
-									res.statusCode = 400;
+									
 									return res.json( {message: 'Offer Code cannot be empty!'} );
 								}
 
 								if(!offer.country) {
-									res.statusCode = 400;
+									
 									return res.json( {message: 'Country cannot be empty!'} );
 								}
 
@@ -170,7 +170,6 @@ module.exports = function(app, express) {
 
 								user.username 			= req.body.username;
 								user.password 			= req.body.password;
-								user.googleId			= req.body.googleId;
 								user.name				= req.body.name;
 								
 
@@ -178,12 +177,12 @@ module.exports = function(app, express) {
 								//=================================================
 
 								if(!user.username) {
-									res.statusCode = 400;
+									
 									return res.json( {message: 'User name cannot be empty!'} );
 								}
 
 								if(!user.password) {
-									res.statusCode = 400;
+									
 									return res.json( {message: 'Password cannot be empty!'} );
 								}
 

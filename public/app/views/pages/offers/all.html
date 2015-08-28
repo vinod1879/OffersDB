@@ -1,0 +1,42 @@
+<div class="page-header">
+	<h1>
+		Offers
+		<a href="/offers/create" class="btn btn-default">
+			<span class="glyphicon glyphicon-download"></span>&nbsp;New Offer
+		</a>
+	</h1>
+</div>
+
+  <div class="container">
+
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>offerId</th>
+            <th>offerCode</th>
+            <th>title</th>
+            <th>buttonActions</th>
+            <th>buttonTitles</th>
+            <th>country</th>
+            <th>description</th>
+            <th>validFrom</th>
+            <th>validTo</th>
+          </tr>
+      </thead>
+      <tbody><tr ng-repeat="mogly in offer.offers">
+        <td>{{mogly.offerId}}</td>
+        <td>{{mogly.offerCode}}</td>
+        <td>{{mogly.title}}</td>
+        <td>{{mogly.buttonActions}}</td>
+        <td>{{mogly.buttonTitles}}</td>
+        <td>{{mogly.country}}<w/td>
+        <td>{{mogly.description}}</td>
+        <td>{{mogly.validFrom}}</td>
+        <td>{{mogly.validTo}}</td>
+       <td><a class="btn" ng-click="install(mogly.offerId)" href="#">
+            <span class="glyphicon glyphicon-download"></span>&nbsp;&nbsp;Edit
+          </a></td>
+      </tr></tbody>
+    </table>
+
+  </div>

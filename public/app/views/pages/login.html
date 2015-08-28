@@ -1,67 +1,31 @@
-<html>
-
-<head>
-    <title>Bootstrap Case</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
-    <linK rel="stylesheet" href="bootstrap-3.3.5-dist/css/Custom.css">
-    <linK rel="stylesheet" href="F:\Source Code\OffersDB\public\app\views\pages\style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-    
-    
-    <script src="builds.js"></script>
-</head>
-
-<body>
-    <header>
-        <div class="navbar  custom-navbar " role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="e">
-                        <img src="..\..\..\assets\img\RBLogo.jpg">
-                    </a>
-                    <h class="navbar-brand custom-navbar">redBus Promotion CMS</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
- 
    <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="account-wall">
-                <form class="form-signin">
-                    <input type="text" class="form-control" placeholder="Email" required autofocus>
-                    <input type="password" class="form-control" placeholder="Password" required>
-                    <button class="btn btn-lg btn-danger btn-block" type="submit">Sign in</button>
-                    <label class="checkbox pull-left">
+                <form class="form-signin" ng-submit="login.doLogin()">
+
+                	<!-- INPUT USERNAME -->
+                    <input type="text" class="form-control" placeholder="Email" required autofocus ng-model="login.loginData.username">
+
+                    <!-- INPUT PASSWORD -->
+                    <input type="password" class="form-control" placeholder="Password" required ng-model="login.loginData.password">
+
+                    <!-- ERRORS -->
+                    <div class="alert alert-danger" ng-if="login.error">
+                    	{{ login.error }}
+                    </div>
+
+                    <!-- LOGIN BUTTON -->
+                    <button class="btn btn-lg btn-danger btn-block" type="submit">
+                    	<span ng-if="!login.processing">Sign in</span>
+                    	<span ng-if="login.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
+                    </button>
+
+                    <!-- REMEMBER ME -->
+                    <label class="checkbox pull-left" style="display:none">
                         <input type="checkbox" value="remember-me">Remember me
                     </label>
                 </form>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
+            <a href="#" class="text-center new-account" style="display:none">Create an account </a>
         </div>
     </div>
-    </div>
-    <!-- <div class="container">
-
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn- btn-block" type="submit">Sign in</button>
-      </form>
-
-    </div> <!-- /container -->
-</body>
-
-</html> -->
