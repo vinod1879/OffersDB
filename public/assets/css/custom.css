@@ -1,21 +1,21 @@
 .custom-navbar{
 	color: #FFFFFF;
-    background-color: #B40404;
+    background-color: #C80404;
 }
 
 
-.custom-navbar > a {
+.custom-navbar > div > ul > li {
 	color: #FFF
 }
 
-.custom-navbar >  li > a {
+.custom-navbar > div > ul >  li > a {
 	color: #FFF
 }
 
-.e img{
- width: 85px;
+.logo img{
  
-line-height: 90%;
+ max-height: 60px;
+ padding-top: 5px;
 }
 
 img{
