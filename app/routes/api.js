@@ -1,6 +1,7 @@
 var jwt				=		require('jsonwebtoken'),
 	Offer			=		require('../models/offer'),
 	User			=		require('../models/user'),
+	Banner 			= 		require('../models/banner'),
 	Config			=		require('../../config');
 
 var superSecret		=		Config.secret;
@@ -250,6 +251,76 @@ module.exports = function(app, express) {
 
 											res.json({message: 'User Successfully deleted'});
 										});
+									});
+
+	//ROUTING FOR BANNERS
+	//==========================================
+
+	apiRouter.route('/banners').post(function(req, res) {
+
+								var banner = Banner();
+
+								banner.bannerId 		= req.body.bannerId;
+								banner.bannerText 		= req.body.bannerText;
+								banner.country 			= req.body.country;
+								banner.displayMode 		= req.body.displayMode;
+								banner.onTapAction 		= req.body.onTapAction;
+								banner.relatedOfferId 	= req.body.relatedOfferId;
+								banner.screenIds 		= req.body.screenIds;
+								banner.thumbnailUrl 	= req.body.thumbnailUrl;
+								banner.validFrom 		= req.body.validFrom;
+								banner.validTo 			= req.body.validTo;
+
+								//ADD VALIDATIONS
+								//=================================================
+
+								if(!banner.bannerText) {
+									
+									return res.json( {message: 'Banner cannot be empty!'} );
+								}
+
+								if(!banner.country) {
+									
+									return res.json( {message: 'Country cannot be empty!'} );
+								}
+
+								banner.save(function(err) {
+
+									if(err) {
+										if(err.code == 11000)
+											return res.json({success: false, message: 'Banner already exists. '});
+										else
+											return res.send(err);
+									}
+									res.json(offer);
+								});
+							}).get(function(req, res) {
+
+								Banner.find(function(err, banners) {
+									if(err) res.send(err);
+
+									res.json(banners);
+								});
+							});
+
+	apiRouter.route('/banners/:banner_id').get(function(req, res) {
+
+										Banner.findById(req.params.banner_id, function(err, banner) {
+
+											if(err) res.send(err);
+
+											res.json(banner);
+										});
+									}).delete(function(req, res) {
+
+										Banner.remove({
+											_id: req.params.banner_id
+										}, function(err, banner) {
+
+											if(err) return res.send(err);
+
+											res.json({message: 'Successfully deleted'});
+										})
 									});
 	return apiRouter;
 };
