@@ -292,7 +292,7 @@ module.exports = function(app, express) {
 										else
 											return res.send(err);
 									}
-									res.json(offer);
+									res.json(banner);
 								});
 							}).get(function(req, res) {
 

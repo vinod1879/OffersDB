@@ -111,3 +111,7 @@ header .navbar {
     display: block;
     margin-top: 10px;
 }
+
+th {
+    text-align: center;
+}

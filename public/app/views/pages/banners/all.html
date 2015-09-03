@@ -1,0 +1,37 @@
+<div class="page-header">
+	<h1>
+		Banners
+		<a href="/banners/create" class="btn btn-default">
+			<span class="glyphicon glyphicon-download"></span>&nbsp;New Banner
+		</a>
+	</h1>
+</div>
+
+  <div class="container">
+
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>Id</th>
+            <th>Thumbnail</th>
+            <th>Text</th>
+            <th>validFrom</th>
+            <th>validTo</th>
+            <th>&nbsp;</th>
+          </tr>
+      </thead>
+      <tbody><tr ng-repeat="mogly in banner.banners">
+        <td>{{mogly.bannerId}}</td>
+        <td style="text-align:center;"><img src="{{mogly.thumbnailUrl}}" alt="Thumbnail" /></td>
+        <td>{{mogly.bannerText}}</td>
+        <td>{{mogly.validFrom}}</td>
+        <td>{{mogly.validTo}}</td>
+        <td>
+          <a class="btn" ng-href="/banners/{{ mogly._id }}">&nbsp;Edit</a>
+          <a href="#" ng-click="user.deleteBanner(mogly._id)" class="btn btn-primary">Delete</a>
+          <a href="#" ng-click="user.deactivateBanner(mogly._id)" class="btn btn-primary">Deactivate</a>
+        </td>
+      </tr></tbody>
+    </table>
+
+  </div>

@@ -27,11 +27,13 @@
 	<script src="app/controllers/mainCtrl.js"></script>
 	<script src="app/controllers/userCtrl.js"></script>
 	<script src="app/controllers/offerCtrl.js"></script>
+	<script src="app/controllers/bannerCtrl.js"></script>
 
 	<!-- services -->
 	<script src="app/services/authService.js"></script>
 	<script src="app/services/userService.js"></script>
 	<script src="app/services/offerService.js"></script>
+	<script src="app/services/bannerService.js"></script>
 
 	<!-- main Angular app files -->
 	<script src="app/app.routes.js"></script>
@@ -54,6 +56,7 @@
                 <ul class="nav navbar-nav" ng-if="main.loggedIn">
                 	<li><a href="/users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
 					<li><a href="/offers"><span class="glyphicon glyphicon-gift"></span> Offers</a></li>
+					<li><a href="/banners"><span class="glyphicon glyphicon-tag"></span> Banners</a></li>
 				</ul>
                 <ul class="nav navbar-nav navbar-right">
 					<li ng-if="!main.loggedIn"><a href="/login">Log in</a></li>

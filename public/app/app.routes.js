@@ -23,7 +23,9 @@ angular.module('app.routes', ['ngRoute']).config(function($routeProvider, $locat
 		templateUrl		: 'app/views/pages/users/single.html',
 		controller 		: 'userEditController',
 		controllerAs 	: 'user'
-	}).when('/offers', {
+	});
+
+	$routeProvider.when('/offers', {
 
 		templateUrl 	: 'app/views/pages/offers/all.html',
 		controller  	: 'offerController',
@@ -38,6 +40,24 @@ angular.module('app.routes', ['ngRoute']).config(function($routeProvider, $locat
 		templateUrl 	: 'app/views/pages/offers/single.html',
 		controller 		: 'offerEditController',
 		controllerAs 	: 'offer'
+	});
+
+
+	$routeProvider.when('/banners', {
+
+		templateUrl 	: 'app/views/pages/banners/all.html',
+		controller  	: 'bannerController',
+		controllerAs 	: 'banner'
+	}).when('/banners/create', {
+
+		templateUrl 	: 'app/views/pages/banners/single.html',
+		controller 		: 'bannerCreateController',
+		controllerAs 	: 'banner'
+	}).when('/banners/:banner_id', {
+
+		templateUrl 	: 'app/views/pages/banners/single.html',
+		controller 		: 'bannerEditController',
+		controllerAs 	: 'banner'
 	});
 
 	$locationProvider.html5Mode(true);
