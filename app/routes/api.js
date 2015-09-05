@@ -141,6 +141,22 @@ module.exports = function(app, express) {
 
 											if(req.body.offerCode) offer.offerCode = req.body.offerCode;
 
+
+											if(req.body.buttonActions) offer.buttonActions 		= req.body.buttonActions;
+											if(req.body.buttonTitles) offer.buttonTitles 		= req.body.buttonTitles;
+											if(req.body.country) offer.country 					= req.body.country;
+											if(req.body.description) offer.description 			= req.body.description;
+											if(req.body.detailsBody) offer.detailsBody 			= req.body.detailsBody;
+											if(req.body.detailsTitle) offer.detailsTitle 		= req.body.detailsTitle;
+											if(req.body.footer) offer.footer 					= req.body.footer;
+											if(req.body.offerCode) offer.offerCode 				= req.body.offerCode;
+											if(req.body.phoneImageUrl) offer.phoneImageUrl 		= req.body.phoneImageUrl;
+											if(req.body.tabletImageUrl) offer.tabletImageUrl 	= req.body.tabletImageUrl;
+											if(req.body.thumbnailUrl) offer.thumbnailUrl 		= req.body.thumbnailUrl;
+											if(req.body.title) offer.title 						= req.body.title;
+											if(req.body.validFrom) offer.validFrom 				= req.body.validFrom;
+											if(req.body.validTo) offer.validTo 					= req.body.validTo;
+
 											offer.save(function(err) {
 
 												if(err) res.send(err);
