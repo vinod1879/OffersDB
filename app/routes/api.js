@@ -90,8 +90,8 @@ module.exports = function(app, express) {
 								offer.tabletImageUrl 	= req.body.tabletImageUrl;
 								offer.thumbnailUrl 		= req.body.thumbnailUrl;
 								offer.title 			= req.body.title;
-								offer.validFrom 		= req.body.validFrom;
-								offer.validTo 			= req.body.validTo;
+								offer.validFrom 		= new Date(Date.parse(req.body.validFrom));
+								offer.validTo 			= new Date(Date.parse(req.body.validTo));
 
 								//ADD VALIDATIONS
 								//=================================================
@@ -154,8 +154,8 @@ module.exports = function(app, express) {
 											if(req.body.tabletImageUrl) offer.tabletImageUrl 	= req.body.tabletImageUrl;
 											if(req.body.thumbnailUrl) offer.thumbnailUrl 		= req.body.thumbnailUrl;
 											if(req.body.title) offer.title 						= req.body.title;
-											if(req.body.validFrom) offer.validFrom 				= req.body.validFrom;
-											if(req.body.validTo) offer.validTo 					= req.body.validTo;
+											if(req.body.validFrom) offer.validFrom 				= new Date(Date.parse(req.body.validFrom));
+											if(req.body.validTo) offer.validTo 					= new Date(Date.parse(req.body.validTo));
 
 											offer.save(function(err) {
 

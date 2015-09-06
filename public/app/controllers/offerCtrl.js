@@ -4,11 +4,16 @@ angular.module('offerCtrl', ['offerService', 'ui.bootstrap']).controller('offerC
 
 	vm.processing = true;
 
+	vm.getAll = function() {
+
 	Offer.all().success(function(data) {
 
-		vm.processing = false;
-		vm.offers = data;
-	});
+			vm.processing = false;
+			vm.offers = data;
+		});
+	};
+
+	vm.getAll();
 
 	vm.deleteOffer = function(id) {
 
@@ -16,13 +21,18 @@ angular.module('offerCtrl', ['offerService', 'ui.bootstrap']).controller('offerC
 
 		Offer.delete(id).success(function(data) {
 
-			Offer.all().success(function(data) {
-
-				vm.processing = false;
-				vm.offers = data;
-			});
+			vm.getAll();
 		}) ;
 	};
+
+	vm.getFormattedDate = function(input) {
+
+		var obj = new Date(Date.parse(input));
+		var str   = obj.getDate() + '-' + (obj.getMonth() + 1) + '-' + obj.getFullYear();
+
+		return str;
+	}
+
 }).controller('offerCreateController', function(Offer) {
 
 	var vm = this;
@@ -38,8 +48,11 @@ angular.module('offerCtrl', ['offerService', 'ui.bootstrap']).controller('offerC
 		Offer.create(vm.offerData).success(function(data) {
 
 			vm.processing = false;
-			vm.offerData = {};
 			vm.message = data.message;
+
+			if(data.success) {
+				vm.offerData = {};
+			}
 		});
 	};
 }).controller('offerEditController', function($routeParams, Offer) {
@@ -51,6 +64,8 @@ angular.module('offerCtrl', ['offerService', 'ui.bootstrap']).controller('offerC
 	Offer.get($routeParams.offer_id).success(function(data) {
 
 		vm.offerData = data;
+		vm.offerData.validFrom = new Date(Date.parse(vm.offerData.validFrom));
+		vm.offerData.validTo = new Date(Date.parse(vm.offerData.validTo));
 	});
 
 	vm.saveOffer = function() {
