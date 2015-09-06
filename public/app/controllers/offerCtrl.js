@@ -1,4 +1,4 @@
-angular.module('offerCtrl', ['offerService']).controller('offerController', function(Offer) {
+angular.module('offerCtrl', ['offerService', 'ui.bootstrap']).controller('offerController', function(Offer) {
 
 	var vm = this;
 

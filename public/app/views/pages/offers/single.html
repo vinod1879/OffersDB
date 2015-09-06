@@ -5,20 +5,7 @@
 <div class="container">
     <form role="form" ng-submit="offer.saveOffer()">
         <table style="width:100%">
-            <!-- <tr>
-                <td style="width:20%">
-                    Button Action:
-                </td>
-                <td>
-                    <div class="form-group">
-                        <select class="selectpicker show-tick" data-style="btn-info">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                    </div>
-                </td>
-            </tr> -->
+            
             <tr>
                 <td style="width:20%">
                     OfferCode:
@@ -89,19 +76,14 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <div class='col-xs-5'>
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" ng-model="parent.offer.offerData.validFrom" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
+                        <div class='col-md-5'>
+                            <div class="input-group date" id='datetimepicker1'>
+                                <input type="date" class="form-control" ng-model="offer.offerData.validFrom" is-open="offer.isFromDateOpen" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="offer.isFromDateOpen = !offer.isFromDateOpen"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </div>
                         </div>
-                        <script type="text/javascript">
-                        $(function() {
-                            $('#datetimepicker1').datepicker();
-                        });
-                        </script>
                     </div>
                 </td>
             </tr>
@@ -111,20 +93,14 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <div class='col-xs-5'>
-                                <div class='input-group date' id='datetimepicker2'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                 </div>
+                        <div class='col-md-5'>
+                            <div class="input-group date">
+                                <input type="date" class="form-control" ng-model="offer.offerData.validTo" is-open="offer.isToDateOpen" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" id='toDateItem' ng-click="offer.isToDateOpen = !offer.isToDateOpen"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
                         </div>
-                      
-                    <script type="text/javascript">
-                        $(function() {
-                        $('#datetimepicker2').datepicker();
-                    });
-                    </script>
                     </div>
                 </td>
             </tr>
