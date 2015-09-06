@@ -92,6 +92,7 @@ module.exports = function(app, express) {
 								offer.title 			= req.body.title;
 								offer.validFrom 		= new Date(Date.parse(req.body.validFrom));
 								offer.validTo 			= new Date(Date.parse(req.body.validTo));
+								offer.offerId 			= req.body.offerId
 
 								//ADD VALIDATIONS
 								//=================================================
@@ -156,6 +157,7 @@ module.exports = function(app, express) {
 											if(req.body.title) offer.title 						= req.body.title;
 											if(req.body.validFrom) offer.validFrom 				= new Date(Date.parse(req.body.validFrom));
 											if(req.body.validTo) offer.validTo 					= new Date(Date.parse(req.body.validTo));
+											if(req.body.offerId) offer.offerId 					= req.body.offerId;
 
 											offer.save(function(err) {
 

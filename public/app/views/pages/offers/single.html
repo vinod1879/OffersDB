@@ -5,6 +5,15 @@
 <div class="container">
     <form role="form" ng-submit="offer.saveOffer()">
         <table style="width:100%">
+
+            <tr>
+                <td style="width:20%">
+                    Offer Id:
+                </td>
+                <td>
+                    <input type="text" placeholder="Offer Id" class="form-group" ng-model="offer.offerData.offerId">
+                </td>
+            </tr>
             
             <tr>
                 <td style="width:20%">
@@ -79,9 +88,6 @@
                         <div class='col-md-5'>
                             <div class="input-group date" id='datetimepicker1'>
                                 <input type="date" class="form-control" ng-model="offer.offerData.validFrom" is-open="offer.isFromDateOpen" />
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="offer.isFromDateOpen = !offer.isFromDateOpen"><i class="glyphicon glyphicon-calendar"></i></button>
-                                </span>
                             </div>
                         </div>
                     </div>
@@ -96,9 +102,6 @@
                         <div class='col-md-5'>
                             <div class="input-group date">
                                 <input type="date" class="form-control" ng-model="offer.offerData.validTo" is-open="offer.isToDateOpen" />
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" id='toDateItem' ng-click="offer.isToDateOpen = !offer.isToDateOpen"><i class="glyphicon glyphicon-calendar"></i></button>
-                                </span>
                             </div>
                         </div>
                     </div>
