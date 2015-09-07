@@ -329,6 +329,33 @@ module.exports = function(app, express) {
 
 											res.json(banner);
 										});
+									}).put(function(req, res) {
+
+										Banner.findById(req.params.banner_id, function(err, banner) {
+
+											if(err) res.send(err);
+
+											if(req.body.bannerId) banner.bannerId = req.body.bannerId;
+
+
+											if(req.body.bannerText) banner.bannerText 			= req.body.bannerText;
+											if(req.body.country) banner.country 				= req.body.country;
+											if(req.body.displayMode) banner.displayMode 		= req.body.displayMode;
+											if(req.body.onTapAction) banner.onTapAction 		= req.body.onTapAction;
+											if(req.body.relatedOfferId) banner.relatedOfferId	= req.body.relatedOfferId;
+											if(req.body.screenIds) banner.screenIds 			= req.body.screenIds;
+											if(req.body.thumbnailUrl) banner.thumbnailUrl 		= req.body.thumbnailUrl;
+											if(req.body.validFrom) banner.validFrom 			= new Date(Date.parse(req.body.validFrom));
+											if(req.body.validTo) banner.validTo 				= new Date(Date.parse(req.body.validTo));
+											
+											banner.save(function(err) {
+
+												if(err) res.send(err);
+
+												res.json({message: 'Banner updated!' });
+											});
+
+										});
 									}).delete(function(req, res) {
 
 										Banner.remove({

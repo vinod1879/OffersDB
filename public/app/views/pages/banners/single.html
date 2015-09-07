@@ -1,22 +1,24 @@
+<head>
 <div class="page-header">
     <h1 ng-if="banner.type == 'create'">Add Banner</h1>
     <h1 ng-if="banner.type == 'edit'">Edit Banner</h1>
 </div>
+</head>
+<body>
 <div class="container">
     <form role="form" ng-submit="banner.saveBanner()">
         <table style="width:100%">
-            
             <tr>
                 <td style="width:20%">
-                    Banner Text:
+                    BannerId:
                 </td>
                 <td>
-                    <input type="text" placeholder="Enter Banner Text" class="form-group" ng-model="offer.offerData.offerCode">
+                    <input type="text" placeholder="Enter Banner Id" class="form-group" ng-model="banner.bannerData.bannerId">
                 </td>
             </tr>
             <tr>
                 <td style="width:20%">
-                    Button Title:
+                    BannerText:
                 </td>
                 <td>
 <!--                     <div class="form-group">
@@ -26,7 +28,7 @@
                             <option>COPY CODE AND BOOK TICKET</option>
                         </select>
                     </div> -->
-                    <input type="text" class="form-group" placeholder="Enter button title" ng-model="offer.offerData.buttonTitles">
+                    <input type="text" class="form-group" placeholder="Enter text" ng-model="banner.bannerData.bannerText">
                 </td>
             </tr>
             <tr></tr>
@@ -37,58 +39,61 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <select ng-model="offer.offerData.country">
-                            <option value="India">India</option>
-                            <option value="Malaysia">Malaysia</option>
-                            <option value="Singapore">Singapore</option>
+                        <select ng-model="banner.bannerData.country">
+                            <option value="INDIA">India</option>
+                            <option value="MALAYSIA">Malaysia</option>
+                            <option value="SINGAPORE">Singapore</option>
                         </select>
                     </div>
                 </td>
             </tr>
+           
+            
+                
             <tr>
                 <td style="width:20%">
-                    Description:
+                    RelatedOfferId:
                 </td>
                 <td>
                     <div class="form-group">
-                        <textarea class="form-control" placeholder="Enter Description" ng-model="offer.offerData.description"></textarea>
+                        <input type="text" placeolder="Enter related offer id" ng-model="banner.bannerData.relatedOfferId">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td style="width:20%">
-                    DetailsBody:
+                    ScreenIds:
                 </td>
                 <td>
                     <div class="form-group">
-                        <textarea class="form-control" rows="5" 
-                        placeholder="Enter Details
- 1.
- 2.
- 3.
- 4." ng-model="offer.offerData.detailsBody"></textarea>
+                        <input type="text" class="form-control" placeholder="Enter screenIds" ng-model="banner.bannerData.screenIds">
                     </div>
                 </td>
             </tr>
+
+            <tr>
+                <td style="width:20%">
+                    Thumbnail:
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter url" ng-model="banner.bannerData.thumbnailUrl">
+                    </div>
+                </td>
+            </tr>
+
             <tr>
                 <td style="width:20%">
                     Valid From:
                 </td>
                 <td>
                     <div class="form-group">
-                        <div class='col-xs-5'>
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" ng-model="parent.offer.offerData.validFrom" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                        <div class="col-md-5">
+                            <div class="input-group date" id="datetimepicker1">
+                                <input type="date" class="form-control" ng-model="banner.bannerData.validFrom" />    
                             </div>
                         </div>
-                        <script type="text/javascript">
-                        $(function() {
-                            $('#datetimepicker1').datepicker();
-                        });
-                        </script>
+                        
                     </div>
                 </td>
             </tr>
@@ -98,79 +103,15 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <div class='col-xs-5'>
+                        <div class='col-md-5'>
                                 <div class='input-group date' id='datetimepicker2'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                                    <input type="date" class="form-control" ng-model="banner.bannerData.validTo" />
                                  </div>
                         </div>
-                      
-                    <script type="text/javascript">
-                        $(function() {
-                        $('#datetimepicker2').datepicker();
-                    });
-                    </script>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td style="width:20%">
-                    DetailsTitle:
-                </td>
-                <td>
-                    <div class="form-group">
-                        <input type="text" placeolder="Enter details title" ng-model="offer.offerData.detailsTitle">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="width:20%">
-                    Footer:
-                </td>
-                <td>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter footer text" ng-model="offer.offerData.footer">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="width:20%">
-                    Title:
-                </td>
-                <td>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter title" ng-model="offer.offerData.title">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="width:20%">
-                    PhoneImageUrl:
-                </td>
-                <td>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Image URL" ng-model="offer.offerData.phoneImageUrl">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    TabletImageUrl:
-                </td>
-                <td>
-                    <input class="form-group form-control" type="text" placeholder="Image URL" ng-model="offer.offerData.tabletImageUrl">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    ThumbnailUrl:
-                </td>
-                <td>
-                    <input class="form-group form-control" type="text" placeholder="Image URL" ng-model="offer.offerData.thumbnailUrl">
-                </td>
-            </tr>
+       
         </table>
         <table>
             <tr>
@@ -186,11 +127,13 @@
             </tr>
         </table>
     </form>
+
 </div>
-<div class="row show-hide-message" ng-show="offer.message">
+<div class="row show-hide-message" ng-show="banner.message">
     <div class="col-sm-6 col-sm-offset-2">
         <div class="alert alert-info">
-            {{ offer.message }}
+            {{ banner.message }}
         </div>
     </div>
 </div>
+</body>
