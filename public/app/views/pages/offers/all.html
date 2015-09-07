@@ -12,32 +12,26 @@
     <table class="table table-striped">
       <thead>
           <tr>
-            
-            <th>offerCode</th>
-            <th>title</th>
-            <th>buttonActions</th>
-            <th>buttonTitles</th>
-            <th>country</th>
-            <th>description</th>
-            <th>validFrom</th>
-            <th>validTo</th>
+            <th>Id</th>
+            <th>Offer Code</th>
+            <th>Title</th>
+            <th>Country</th>
+            <th>From</th>
+            <th>To</th>
             <th>&nbsp;</th>
           </tr>
       </thead>
       <tbody><tr ng-repeat="mogly in offer.offers">
-        
+        <td>{{mogly.offerId}}</td>
         <td>{{mogly.offerCode}}</td>
         <td>{{mogly.title}}</td>
-        <td>{{mogly.buttonActions}}</td>
-        <td>{{mogly.buttonTitles}}</td>
         <td>{{mogly.country}}<w/td>
-        <td>{{mogly.description}}</td>
-        <td>{{mogly.validFrom}}</td>
-        <td>{{mogly.validTo}}</td>
+        <td ng-bind="offer.getFormattedDate(mogly.validFrom)"></td>
+        <td ng-bind="offer.getFormattedDate(mogly.validTo)"></td>
         <td>
           <a class="btn" ng-href="/offers/{{ mogly._id }}">&nbsp;Edit</a>
-          <a href="#" ng-click="user.deleteOffer(offer._id)" class="btn btn-primary">Delete</a>
-          <a href="#" ng-click="user.deactivateOffer(offer._id)" class="btn btn-primary">Deactivate</a>
+          <a href="#" ng-click="" class="btn btn-primary">Delete</a>
+          <a href="#" ng-click="" class="btn btn-primary">Deactivate</a>
         </td>
       </tr></tbody>
     </table>

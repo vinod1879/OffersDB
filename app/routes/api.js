@@ -90,8 +90,9 @@ module.exports = function(app, express) {
 								offer.tabletImageUrl 	= req.body.tabletImageUrl;
 								offer.thumbnailUrl 		= req.body.thumbnailUrl;
 								offer.title 			= req.body.title;
-								offer.validFrom 		= req.body.validFrom;
-								offer.validTo 			= req.body.validTo;
+								offer.validFrom 		= new Date(Date.parse(req.body.validFrom));
+								offer.validTo 			= new Date(Date.parse(req.body.validTo));
+								offer.offerId 			= req.body.offerId
 
 								//ADD VALIDATIONS
 								//=================================================
@@ -154,8 +155,9 @@ module.exports = function(app, express) {
 											if(req.body.tabletImageUrl) offer.tabletImageUrl 	= req.body.tabletImageUrl;
 											if(req.body.thumbnailUrl) offer.thumbnailUrl 		= req.body.thumbnailUrl;
 											if(req.body.title) offer.title 						= req.body.title;
-											if(req.body.validFrom) offer.validFrom 				= req.body.validFrom;
-											if(req.body.validTo) offer.validTo 					= req.body.validTo;
+											if(req.body.validFrom) offer.validFrom 				= new Date(Date.parse(req.body.validFrom));
+											if(req.body.validTo) offer.validTo 					= new Date(Date.parse(req.body.validTo));
+											if(req.body.offerId) offer.offerId 					= req.body.offerId;
 
 											offer.save(function(err) {
 
@@ -326,6 +328,33 @@ module.exports = function(app, express) {
 											if(err) res.send(err);
 
 											res.json(banner);
+										});
+									}).put(function(req, res) {
+
+										Banner.findById(req.params.banner_id, function(err, banner) {
+
+											if(err) res.send(err);
+
+											if(req.body.bannerId) banner.bannerId = req.body.bannerId;
+
+
+											if(req.body.bannerText) banner.bannerText 			= req.body.bannerText;
+											if(req.body.country) banner.country 				= req.body.country;
+											if(req.body.displayMode) banner.displayMode 		= req.body.displayMode;
+											if(req.body.onTapAction) banner.onTapAction 		= req.body.onTapAction;
+											if(req.body.relatedOfferId) banner.relatedOfferId	= req.body.relatedOfferId;
+											if(req.body.screenIds) banner.screenIds 			= req.body.screenIds;
+											if(req.body.thumbnailUrl) banner.thumbnailUrl 		= req.body.thumbnailUrl;
+											if(req.body.validFrom) banner.validFrom 			= new Date(Date.parse(req.body.validFrom));
+											if(req.body.validTo) banner.validTo 				= new Date(Date.parse(req.body.validTo));
+											
+											banner.save(function(err) {
+
+												if(err) res.send(err);
+
+												res.json({message: 'Banner updated!' });
+											});
+
 										});
 									}).delete(function(req, res) {
 

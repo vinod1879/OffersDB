@@ -5,20 +5,16 @@
 <div class="container">
     <form role="form" ng-submit="offer.saveOffer()">
         <table style="width:100%">
-            <!-- <tr>
+
+            <tr>
                 <td style="width:20%">
-                    Button Action:
+                    Offer Id:
                 </td>
                 <td>
-                    <div class="form-group">
-                        <select class="selectpicker show-tick" data-style="btn-info">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                    </div>
+                    <input type="text" placeholder="Offer Id" class="form-group" ng-model="offer.offerData.offerId">
                 </td>
-            </tr> -->
+            </tr>
+            
             <tr>
                 <td style="width:20%">
                     OfferCode:
@@ -40,6 +36,12 @@
                         </select>
                     </div> -->
                     <input type="text" class="form-group" placeholder="Enter button title" ng-model="offer.offerData.buttonTitles">
+                </td>
+                <td style="width:20%">
+                    Button Action:
+                </td>
+                <td>
+                    <input type="text" class="form-group" placeholder="Enter action code" ng-model="offer.offerData.buttonActions">
                 </td>
             </tr>
             <tr></tr>
@@ -89,19 +91,11 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <div class='col-xs-5'>
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" ng-model="parent.offer.offerData.validFrom" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                        <div class='col-md-5'>
+                            <div class="input-group date" id='datetimepicker1'>
+                                <input type="date" class="form-control" ng-model="offer.offerData.validFrom" is-open="offer.isFromDateOpen" />
                             </div>
                         </div>
-                        <script type="text/javascript">
-                        $(function() {
-                            $('#datetimepicker1').datepicker();
-                        });
-                        </script>
                     </div>
                 </td>
             </tr>
@@ -111,20 +105,11 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <div class='col-xs-5'>
-                                <div class='input-group date' id='datetimepicker2'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                 </div>
+                        <div class='col-md-5'>
+                            <div class="input-group date">
+                                <input type="date" class="form-control" ng-model="offer.offerData.validTo" is-open="offer.isToDateOpen" />
+                            </div>
                         </div>
-                      
-                    <script type="text/javascript">
-                        $(function() {
-                        $('#datetimepicker2').datepicker();
-                    });
-                    </script>
                     </div>
                 </td>
             </tr>
