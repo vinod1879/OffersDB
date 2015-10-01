@@ -23,4 +23,4 @@ BannerSchema.pre('save', function(next)
 	next();
 });
 
-module.exports = mongoose.model('Banner', BannerSchema);
+module.exports = mongoose.model('Banner', BannerSchema, 'Banners');

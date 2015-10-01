@@ -42,4 +42,4 @@ OfferSchema.pre('save', function(next)
 //     }}, callback);
 // }
 
-module.exports = mongoose.model('Offer', OfferSchema);
+module.exports = mongoose.model('Offer', OfferSchema, 'Offers');
