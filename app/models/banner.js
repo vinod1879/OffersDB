@@ -19,6 +19,8 @@ BannerSchema.pre('save', function(next)
 {
 	var user = this;
 
+	user.displayMode = "";
+	user.onTapAction = "1";
 	user.modified = Date();
 	next();
 });
