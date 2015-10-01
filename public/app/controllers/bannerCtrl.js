@@ -23,13 +23,7 @@ angular.module('bannerCtrl', ['bannerService']).controller('bannerController', f
 			});
 		});
 	};
-
-	vm.getFormattedDate = function(input){
-		var dateObject = new Date(Date.parse(input));
-		var dateStr = dateObject.getDate() + "-" + (dateObject.getMonth()+1) + "-" + dateObject.getFullYear();
-
-		return dateStr;
-	}; 
+	
 }).controller('bannerCreateController', function(Banner) {
 
 	var vm = this;
@@ -62,8 +56,6 @@ angular.module('bannerCtrl', ['bannerService']).controller('bannerController', f
 	Banner.get($routeParams.banner_id).success(function(data) {
 
 		vm.bannerData = data;
-		vm.bannerData.validFrom = new Date(Date.parse(vm.bannerData.validFrom));
-		vm.bannerData.validTo = new Date(Date.parse(vm.bannerData.validTo));
 	});
 
 	vm.saveBanner = function() {

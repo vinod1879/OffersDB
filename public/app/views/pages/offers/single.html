@@ -28,13 +28,6 @@
                     Button Title:
                 </td>
                 <td>
-<!--                     <div class="form-group">
-                        <select class="selectpicker show-tick" data-style="btn-info">
-                            <option>COPY CODE AND BOOK TICKET</option>
-                            <option>COPY CODE AND BOOK TICKET</option>
-                            <option>COPY CODE AND BOOK TICKET</option>
-                        </select>
-                    </div> -->
                     <input type="text" class="form-group" placeholder="Enter button title" ng-model="offer.offerData.buttonTitles">
                 </td>
                 <td style="width:20%">
@@ -92,8 +85,8 @@
                 <td>
                     <div class="form-group">
                         <div class='col-md-5'>
-                            <div class="input-group date" id='datetimepicker1'>
-                                <input type="date" class="form-control" ng-model="offer.offerData.validFrom" is-open="offer.isFromDateOpen" />
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="offer.offerData.validFrom" />
                             </div>
                         </div>
                     </div>
@@ -106,8 +99,8 @@
                 <td>
                     <div class="form-group">
                         <div class='col-md-5'>
-                            <div class="input-group date">
-                                <input type="date" class="form-control" ng-model="offer.offerData.validTo" is-open="offer.isToDateOpen" />
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="offer.offerData.validTo" />
                             </div>
                         </div>
                     </div>

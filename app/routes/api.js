@@ -90,8 +90,8 @@ module.exports = function(app, express) {
 								offer.tabletImageUrl 	= req.body.tabletImageUrl;
 								offer.thumbnailUrl 		= req.body.thumbnailUrl;
 								offer.title 			= req.body.title;
-								offer.validFrom 		= new Date(Date.parse(req.body.validFrom));
-								offer.validTo 			= new Date(Date.parse(req.body.validTo));
+								offer.validFrom 		= req.body.validFrom;
+								offer.validTo 			= req.body.validTo;
 								offer.offerId 			= req.body.offerId
 
 								//ADD VALIDATIONS
@@ -155,8 +155,8 @@ module.exports = function(app, express) {
 											if(req.body.tabletImageUrl) offer.tabletImageUrl 	= req.body.tabletImageUrl;
 											if(req.body.thumbnailUrl) offer.thumbnailUrl 		= req.body.thumbnailUrl;
 											if(req.body.title) offer.title 						= req.body.title;
-											if(req.body.validFrom) offer.validFrom 				= new Date(Date.parse(req.body.validFrom));
-											if(req.body.validTo) offer.validTo 					= new Date(Date.parse(req.body.validTo));
+											if(req.body.validFrom) offer.validFrom 				= req.body.validFrom;
+											if(req.body.validTo) offer.validTo 					= req.body.validTo;
 											if(req.body.offerId) offer.offerId 					= req.body.offerId;
 
 											offer.save(function(err) {
@@ -286,8 +286,8 @@ module.exports = function(app, express) {
 								banner.relatedOfferId 	= req.body.relatedOfferId;
 								banner.screenIds 		= req.body.screenIds;
 								banner.thumbnailUrl 	= req.body.thumbnailUrl;
-								banner.validFrom 		= req.body.validFrom;
-								banner.validTo 			= req.body.validTo;
+								banner.validityFrom 	= req.body.validityFrom;
+								banner.validityTo 		= req.body.validityTo;
 
 								//ADD VALIDATIONS
 								//=================================================
@@ -345,8 +345,8 @@ module.exports = function(app, express) {
 											if(req.body.relatedOfferId) banner.relatedOfferId	= req.body.relatedOfferId;
 											if(req.body.screenIds) banner.screenIds 			= req.body.screenIds;
 											if(req.body.thumbnailUrl) banner.thumbnailUrl 		= req.body.thumbnailUrl;
-											if(req.body.validFrom) banner.validFrom 			= new Date(Date.parse(req.body.validFrom));
-											if(req.body.validTo) banner.validTo 				= new Date(Date.parse(req.body.validTo));
+											if(req.body.validityFrom) banner.validityFrom 		= req.body.validityFrom;
+											if(req.body.validityTo) banner.validityTo 			= req.body.validityTo;
 											
 											banner.save(function(err) {
 

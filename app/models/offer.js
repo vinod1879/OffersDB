@@ -15,10 +15,10 @@ var OfferSchema		=	new Schema({buttonActions: 	{type: Array, require: false},
 									tabletImageUrl: {type: String, require: true},
 									thumbnailUrl: 	{type: String, require: true},
 									title: 			{type: String, require: true},
-									validFrom: 		{type: Date, require: true},
-									validTo: 		{type: Date, require: true},
-									modified: 		{type: Date, require: true}
-								});
+									validFrom: 		{type: String, require: true},
+									validTo: 		{type: String, require: true},
+									modified: 		{type: Date, require: true, select: false}
+								}, {versionKey: false});
 
 OfferSchema.pre('save', function(next)
 {
@@ -42,4 +42,4 @@ OfferSchema.pre('save', function(next)
 //     }}, callback);
 // }
 
-module.exports = mongoose.model('Offer', OfferSchema);
+module.exports = mongoose.model('Offer', OfferSchema, 'Offers');
