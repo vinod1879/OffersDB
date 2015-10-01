@@ -10,10 +10,10 @@ var BannerSchema		=	new Schema({bannerId: 	{type: String, require: false},
 									relatedOfferId: {type: String, require: true},
 									screenIds: 		{type: Array, require: false},
 									thumbnailUrl: 	{type: String, require: true},
-									validFrom: 		{type: Date, require: true},
-									validTo: 		{type: Date, require: true},
-									modified: 		{type: Date, require: true}
-								});
+									validityFrom: 	{type: String, require: true},
+									validityTo: 	{type: String, require: true},
+									modified: 		{type: Date, require: true, select: false}
+								}, {versionKey: false});
 
 BannerSchema.pre('save', function(next)
 {

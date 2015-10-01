@@ -26,8 +26,8 @@
         <td>{{mogly.offerCode}}</td>
         <td>{{mogly.title}}</td>
         <td>{{mogly.country}}<w/td>
-        <td ng-bind="offer.getFormattedDate(mogly.validFrom)"></td>
-        <td ng-bind="offer.getFormattedDate(mogly.validTo)"></td>
+        <td>{{ mogly.validFrom }}</td>
+        <td>{{ mogly.validTo }}</td>
         <td>
           <a class="btn" ng-href="/offers/{{ mogly._id }}">&nbsp;Edit</a>
           <a href="#" ng-click="" class="btn btn-primary">Delete</a>

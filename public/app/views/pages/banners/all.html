@@ -30,8 +30,8 @@
         <td>{{mogly.country}}</td>
         <td>{{mogly.relatedOfferId}}</td>
         <td><img src="{{mogly.thumbnailUrl}}" style="max-height:30px"/></td>
-        <td ng-bind = "banner.getFormattedDate(mogly.validFrom)"></td>
-        <td ng-bind = "banner.getFormattedDate(mogly.validTo)"></td>
+        <td>{{ mogly.validityFrom }}</td>
+        <td>{{ mogly.validityTo }}</td>
         <td>
           <a class="btn" ng-href="/banners/{{ mogly._id }}">&nbsp;Edit</a>
           <a href="#" ng-click="user.deletebanner(banner._id)" class="btn btn-primary">Delete</a>
