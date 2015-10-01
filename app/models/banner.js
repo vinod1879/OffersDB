@@ -11,8 +11,7 @@ var BannerSchema		=	new Schema({bannerId: 	{type: String, require: false},
 									screenIds: 		{type: Array, require: false},
 									thumbnailUrl: 	{type: String, require: true},
 									validityFrom: 	{type: String, require: true},
-									validityTo: 	{type: String, require: true},
-									modified: 		{type: Date, require: true, select: false}
+									validityTo: 	{type: String, require: true}
 								}, {versionKey: false});
 
 BannerSchema.pre('save', function(next)
@@ -21,7 +20,7 @@ BannerSchema.pre('save', function(next)
 
 	user.displayMode = "";
 	user.onTapAction = "1";
-	user.modified = Date();
+	//user.modified = Date();
 	next();
 });
 

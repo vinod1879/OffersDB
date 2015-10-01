@@ -16,15 +16,14 @@ var OfferSchema		=	new Schema({buttonActions: 	{type: Array, require: false},
 									thumbnailUrl: 	{type: String, require: true},
 									title: 			{type: String, require: true},
 									validFrom: 		{type: String, require: true},
-									validTo: 		{type: String, require: true},
-									modified: 		{type: Date, require: true, select: false}
+									validTo: 		{type: String, require: true}
 								}, {versionKey: false});
 
 OfferSchema.pre('save', function(next)
 {
 	var user = this;
 
-	user.modified = Date();
+	//user.modified = Date();
 	next();
 });
 
