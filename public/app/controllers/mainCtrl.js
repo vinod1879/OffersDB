@@ -12,6 +12,11 @@ angular.module('mainCtrl', []).controller('mainController', function($rootScope,
 		});
 	});
 
+	vm.flushCache = function() {
+		window.open('http://mobapi.redbus.in/mconfig/flushcache');
+		window.open('http://m.redbus.in/healthcheck/flushcache ');
+	};
+
 	vm.doLogin = function() {
 
 		vm.processing = true;
@@ -28,6 +33,7 @@ angular.module('mainCtrl', []).controller('mainController', function($rootScope,
 		});
 	};
 
+	
 	vm.doLogout = function() {
 
 		Auth.logout();

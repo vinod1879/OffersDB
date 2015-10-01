@@ -21,13 +21,6 @@
                     BannerText:
                 </td>
                 <td>
-<!--                     <div class="form-group">
-                        <select class="selectpicker show-tick" data-style="btn-info">
-                            <option>COPY CODE AND BOOK TICKET</option>
-                            <option>COPY CODE AND BOOK TICKET</option>
-                            <option>COPY CODE AND BOOK TICKET</option>
-                        </select>
-                    </div> -->
                     <input type="text" class="form-group" placeholder="Enter text" ng-model="banner.bannerData.bannerText">
                 </td>
             </tr>
@@ -89,8 +82,8 @@
                 <td>
                     <div class="form-group">
                         <div class="col-md-5">
-                            <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control" ng-model="banner.bannerData.validFrom" />    
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="banner.bannerData.validityFrom" />    
                             </div>
                         </div>
                         
@@ -103,9 +96,9 @@
                 </td>
                 <td>
                     <div class="form-group">
-                        <div class='col-md-5'>
-                                <div class='input-group date' id='datetimepicker2'>
-                                    <input type="date" class="form-control" ng-model="banner.bannerData.validTo" />
+                        <div class="col-md-5">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" ng-model="banner.bannerData.validityTo" />
                                  </div>
                         </div>
                     </div>

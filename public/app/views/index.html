@@ -58,7 +58,9 @@
                 	<li><a href="/users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
 					<li><a href="/offers"><span class="glyphicon glyphicon-gift"></span> Offers</a></li>
 					<li><a href="/banners"><span class="glyphicon glyphicon-tag"></span> Banners</a></li>
+					<li><a ng-click=" main.flushCache(); "><span class="glyphicon glyphicon-refresh"></span> Flush</a></li>
 				</ul>
+
                 <ul class="nav navbar-nav navbar-right">
 					<li ng-if="!main.loggedIn"><a href="/login">Log in</a></li>
 					<li ng-if="main.loggedIn" class="navbar-text">Hello {{ main.user.name }}!</li>

@@ -25,14 +25,6 @@ angular.module('offerCtrl', ['offerService', 'ui.bootstrap']).controller('offerC
 		}) ;
 	};
 
-	vm.getFormattedDate = function(input) {
-
-		var obj = new Date(Date.parse(input));
-		var str   = obj.getDate() + '-' + (obj.getMonth() + 1) + '-' + obj.getFullYear();
-
-		return str;
-	}
-
 }).controller('offerCreateController', function(Offer) {
 
 	var vm = this;
@@ -64,8 +56,6 @@ angular.module('offerCtrl', ['offerService', 'ui.bootstrap']).controller('offerC
 	Offer.get($routeParams.offer_id).success(function(data) {
 
 		vm.offerData = data;
-		vm.offerData.validFrom = new Date(Date.parse(vm.offerData.validFrom));
-		vm.offerData.validTo = new Date(Date.parse(vm.offerData.validTo));
 	});
 
 	vm.saveOffer = function() {
