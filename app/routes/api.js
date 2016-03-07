@@ -89,6 +89,7 @@ module.exports = function(app, express) {
 								offer.phoneImageUrl 	= req.body.phoneImageUrl;
 								offer.tabletImageUrl 	= req.body.tabletImageUrl;
 								offer.thumbnailUrl 		= req.body.thumbnailUrl;
+								offer.widescreenURL		= req.body.widescreenURL;
 								offer.title 			= req.body.title;
 								offer.validFrom 		= req.body.validFrom;
 								offer.validTo 			= req.body.validTo;
@@ -105,6 +106,11 @@ module.exports = function(app, express) {
 								if(!offer.country) {
 									
 									return res.json( {message: 'Country cannot be empty!'} );
+								}
+
+								if (!offer.widescreenURL) {
+
+									offer.widescreenURL = "";
 								}
 
 								offer.save(function(err) {
@@ -154,6 +160,7 @@ module.exports = function(app, express) {
 											if(req.body.phoneImageUrl) offer.phoneImageUrl 		= req.body.phoneImageUrl;
 											if(req.body.tabletImageUrl) offer.tabletImageUrl 	= req.body.tabletImageUrl;
 											if(req.body.thumbnailUrl) offer.thumbnailUrl 		= req.body.thumbnailUrl;
+											if(req.body.widescreenURL) offer.widescreenURL		= req.body.widescreenURL;
 											if(req.body.title) offer.title 						= req.body.title;
 											if(req.body.validFrom) offer.validFrom 				= req.body.validFrom;
 											if(req.body.validTo) offer.validTo 					= req.body.validTo;

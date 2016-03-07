@@ -14,6 +14,7 @@ var OfferSchema		=	new Schema({buttonActions: 	{type: Array, require: false},
 									phoneImageUrl: 	{type: String, require: true},
 									tabletImageUrl: {type: String, require: true},
 									thumbnailUrl: 	{type: String, require: true},
+									widescreenURL: 	{type: String, require: true},
 									title: 			{type: String, require: true},
 									validFrom: 		{type: String, require: true},
 									validTo: 		{type: String, require: true}
