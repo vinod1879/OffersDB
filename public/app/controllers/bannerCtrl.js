@@ -12,16 +12,19 @@ angular.module('bannerCtrl', ['bannerService']).controller('bannerController', f
 
 	vm.deleteBanner = function(id) {
 
-		vm.processing = true;
+		if (confirm("Sure you want to delete this banner?")) {
 
-		Banner.delete(id).success(function(data) {
+			vm.processing = true;
 
-			Banner.all().success(function(data) {
+			Banner.delete(id).success(function(data) {
 
-				vm.processing = false;
-				vm.banners = data;
+				Banner.all().success(function(data) {
+
+					vm.processing = false;
+					vm.banners = data;
+				});
 			});
-		});
+		}
 	};
 	
 }).controller('bannerCreateController', function(Banner) {

@@ -62,8 +62,8 @@
         <td>{{ mogly.validityTo }}</td>
         <td>
           <a class="btn" ng-href="/banners/{{ mogly._id }}">&nbsp;Edit</a>
-          <a href="#" ng-click="user.deletebanner(banner._id)" class="btn btn-primary">Delete</a>
-          <a href="#" ng-click="user.deactivateBanner(banner._id)" class="btn btn-primary">Deactivate</a>
+          <a href="#" ng-click="banner.deleteBanner(mogly._id)" class="btn btn-primary">Delete</a>
+          <!-- <a href="#" ng-click="user.deactivateBanner(mogly._id)" class="btn btn-primary">Deactivate</a> -->
         </td>
       </tr></tbody>
     </table>

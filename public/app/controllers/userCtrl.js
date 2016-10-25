@@ -12,16 +12,19 @@ angular.module('userCtrl', ['userService']).controller('userController', functio
 
 	vm.deleteUser = function(id) {
 
-		vm.processing = true;
+		if (confirm("Sure you want to delete this user?")) {
 
-		User.delete(id).success(function(data) {
+			vm.processing = true;
 
-			User.all().success(function(data) {
+			User.delete(id).success(function(data) {
 
-				vm.processing = false;
-				vm.users = data;
+				User.all().success(function(data) {
+
+					vm.processing = false;
+					vm.users = data;
+				});
 			});
-		}) ;
+		}		
 	};
 }).controller('userCreateController', function(User) {
 

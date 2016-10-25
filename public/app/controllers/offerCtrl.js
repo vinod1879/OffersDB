@@ -17,12 +17,15 @@ angular.module('offerCtrl', ['offerService', 'ui.bootstrap']).controller('offerC
 
 	vm.deleteOffer = function(id) {
 
-		vm.processing = true;
+		if (confirm("Sure you want to delete this offer?")) {
 
-		Offer.delete(id).success(function(data) {
+			vm.processing = true;
 
-			vm.getAll();
-		}) ;
+			Offer.delete(id).success(function(data) {
+
+				vm.getAll();
+			});
+		}
 	};
 
 }).controller('offerCreateController', function(Offer) {
