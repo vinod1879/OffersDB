@@ -7,21 +7,46 @@
 	</h1>
 </div>
 
-  <div class="container">
+  <div class="container" ng-init="sortType = 'offerCode'; sortReverse = false; ">
 
     <table class="table table-striped">
       <thead>
           <tr>
-            <th>Id</th>
-            <th>Offer Code</th>
-            <th>Title</th>
-            <th>Country</th>
-            <th>From</th>
-            <th>To</th>
+            <th>
+              <a href="#" ng-click="sortType = 'offerId'; sortReverse = !sortReverse; ">Id
+                <span ng-show="sortType == 'offerId' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'offerId' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'offerCode'; sortReverse = !sortReverse; ">Offer Code
+                <span ng-show="sortType == 'offerCode' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'offerCode' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse; ">Title
+                <span ng-show="sortType == 'title' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'title' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'country'; sortReverse = !sortReverse; ">Country
+                <span ng-show="sortType == 'country' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'country' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'validFrom'; sortReverse = !sortReverse; ">From
+                <span ng-show="sortType == 'validFrom' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'validFrom' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'validTo'; sortReverse = !sortReverse; ">To
+                <span ng-show="sortType == 'validTo' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'validTo' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
             <th>&nbsp;</th>
           </tr>
       </thead>
-      <tbody><tr ng-repeat="mogly in offer.offers">
+      <tbody><tr ng-repeat="mogly in offer.offers | orderBy:sortType:sortReverse">
         <td>{{mogly.offerId}}</td>
         <td>{{mogly.offerCode}}</td>
         <td>{{mogly.title}}</td>

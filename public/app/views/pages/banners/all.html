@@ -7,23 +7,51 @@
 	</h1>
 </div>
 
-  <div class="container">
+  <div class="container" ng-init="sortType = 'bannerId'; sortReverse = false; ">
 
     <table class="table table-striped">
       <thead>
           <tr>
-            
-            <th>banner Id</th>
-            <th>Text</th>
-            <th>Country</th>
-            <th>Realted Offer</th>
+
+            <th>
+              <a href="#" ng-click="sortType = 'bannerId'; sortReverse = !sortReverse; ">banner Id
+                <span ng-show="sortType == 'bannerId' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'bannerId' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'bannerText'; sortReverse = !sortReverse; ">Text
+                <span ng-show="sortType == 'bannerText' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'bannerText' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'country'; sortReverse = !sortReverse; ">Country
+                <span ng-show="sortType == 'country' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'country' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'relatedOfferId'; sortReverse = !sortReverse; ">Related Offer
+                <span ng-show="sortType == 'relatedOfferId' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'relatedOfferId' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+
             <th>Thumbnail</th>
-            <th>validFrom</th>
-            <th>validTo</th>
+
+            <th><a href="#" ng-click="sortType = 'validityFrom'; sortReverse = !sortReverse; ">From
+                <span ng-show="sortType == 'validityFrom' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'validityFrom' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+            <th><a href="#" ng-click="sortType = 'validityTo'; sortReverse = !sortReverse; ">To
+                <span ng-show="sortType == 'validityTo' &&  !sortReverse" class="glyphicon glyphicon-arrow-down"></span>
+                <span ng-show="sortType == 'validityTo' &&  sortReverse" class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+            </th>
+
             <th>&nbsp;</th>
           </tr>
       </thead>
-      <tbody><tr ng-repeat="mogly in banner.banners">
+      <tbody><tr ng-repeat="mogly in banner.banners | orderBy:sortType:sortReverse">
         
         <td>{{mogly.bannerId}}</td>
         <td>{{mogly.bannerText}}</td>
